@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		{block name="title"}<title>{$config.front_title}</title>{/block}
+		<meta name="keywords" content="{$config.keywords}"></meta>
+		<meta name="description" content="{$config.description}"></meta>
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=0">
+		<meta name="format-detection" content="telephone=no, address=no, email=no">
+		<meta name="x5-orientation" content="portrait">
+		<meta name="x5-fullscreen" content="true">
+		<meta name="screen-orientation" content="portrait">
+		<meta name="full-screen" content="yes">
+		<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+		<!--覆盖样式放最后-->		
+		<link rel="stylesheet" href="__STATIC__/css/style.css">		
+		{block name="css"}	{/block}
+	</head>
+	<body>
+		<header>
+		</header>
+		<!--header end-->
+		<!--主体内容部分-->
+		<div class="clearfix"></div>
+		{block name="content"}{/block}		
+		<!--底部内容部分-->
+		<div class="clearfix"></div>
+		<footer>		
+		</footer>
+		<script type="text/javascript" src="__STATIC__/js/jquery.min.js"></script>
+		<!--公共表单验证组件-->
+		<script type="text/javascript" src="__STATIC__/js/jquery.validate.min.js"></script>
+		<!--公共表单提交组件-->
+		<script type="text/javascript" src="__STATIC__/js/jquery.form.js"></script>
+		{block name="javascript"}{/block}
+	</body>
+</html>

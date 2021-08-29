@@ -1,0 +1,165 @@
+{extend name="public:base" /} 
+{block name="css"} 
+{/block} 
+{block name="content"}
+    <div id="page-head">
+        <div id="page-title">
+            <h1 class="page-header text-overflow">个人设置</h1>
+        </div>
+    </div>
+    <div id="page-content">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="tab-base">
+                    <!-- Nav tabs -->
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a href="#demo-bsc-tab-1" data-toggle="tab">基本信息</a></li>
+                        <li><a href="#demo-bsc-tab-2" data-toggle="tab">安全设置</a></li>
+                        <li><a href="#demo-bsc-tab-3" data-toggle="tab">收款信息</a></li>
+                    </ul>
+                    <!-- Tabs Content -->
+                    <form id="demo-bv-bsc-tabs" class="form-horizontal bv-form" action="#" method="post" novalidate="novalidate">
+                        <button type="submit" class="bv-hidden-submit" style="display: none; width: 0px; height: 0px;"></button>
+                        <div class="tab-content">
+                            <div class="tab-pane pad-btm fade in active" id="demo-bsc-tab-1">
+                                <p class="text-main text-bold">基本信息</p>
+                                <hr>
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label text-bold label-colon">商户编号</label>
+                                    <div class="col-md-9">
+                                        <p class="form-control-static">1027585</p>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label text-bold label-colon">下级分销编号</label>
+                                    <div class="col-md-9">
+                                        <p class="form-control-static">8613398</p>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label text-bold label-colon">登陆账号</label>
+                                    <div class="col-md-9">
+                                        <p class="form-control-static">97887526@qq.com</p>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label text-bold label-colon">身份证号</label>
+                                    <div class="col-md-9">
+                                        <p class="form-control-static">450122********5516</p>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-3  control-label text-bold label-colon">手机号码</label>
+                                    <div class="col-md-7  col-xs-10">
+                                        <p class="form-control-static">
+                                            181*****617
+                                        </p>
+                                    </div>
+                                    
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label text-bold label-colon">销售权限</label>
+                                    <div class="col-md-9">
+                                        <p class="form-control-static">
+                                            <span class="text-green">已开通</span>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label text-bold label-colon">结算权限</label>
+                                    <div class="col-md-9">
+                                        <p class="form-control-static">
+                                            <span class="text-green">已开通</span>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label text-bold label-colon">结算方式</label>
+                                    <div class="col-md-9">
+                                        <p class="form-control-static">
+                                            <span class="text-green">自动结算</span>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="demo-bsc-tab-2">
+                                <p class="text-main text-bold">安全设置</p>
+                                <hr>
+                                <div class="form-group has-feedback">
+                                    <label class="col-md-3 col-xs-3 control-label text-bold label-colon form-control-static">
+                                        登录验证
+                                    </label>
+                                    <div class="col-md-7 col-xs-7">
+                                        <p class="form-control-static">
+                                            <span class="text-red">未开启登陆Email验证，邮箱验证可有效保护账户安全</span>
+                                        </p>
+                                    </div>
+                                    <div class="col-md-2 col-xs-2">
+                                        <p class="form-control-static">
+                                                <a href="/User/User/Safe" class="btn btn-info" data-toggle="modal" data-target="#myModal">开启</a>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="form-group has-feedback">
+                                    <label class="col-lg-3 col-xs-3 control-label text-bold label-colon form-control-static">
+                                        唯一登录
+                                    </label>
+                                    <div class="col-lg-7 col-xs-7">
+                                        <p class="form-control-static">
+                                        <span class="text-green">已开启</span>
+
+                                        </p>
+                                    </div>
+                                    <div class="col-lg-2 col-xs-2">
+                                        <p class="form-control-static">
+                                                <a href="/User/User/OnlyLogin" class="btn btn-info" data-toggle="modal" data-target="#myModal">关闭</a>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="demo-bsc-tab-3">
+                                <p class="text-main text-bold">收款信息</p>
+                                <hr>
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label text-bold label-colon">收款人</label>
+                                    <div class="col-md-9">
+                                        <p class="form-control-static">韦君元</p>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label text-bold label-colon">收款方式</label>
+                                    <div class="col-md-9">
+                                        <p class="form-control-static">支付宝</p>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label text-bold label-colon">收款账号</label>
+                                    <div class="col-md-9">
+                                        <p class="form-control-static">api777@qq.com</p>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label text-bold label-colon">开户地址</label>
+                                    <div class="col-md-9">
+                                        <p class="form-control-static"></p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-footer clearfix hidden">
+                                <div class="col-lg-7 col-lg-offset-3">
+                                    <button type="submit" class="btn btn-primary">
+                                        Validate
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+{/block} 
+{block name="javascript"} 
+{/block}

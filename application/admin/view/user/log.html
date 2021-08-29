@@ -1,0 +1,115 @@
+{extend name="public:base" /} {block name="css"} {/block} {block name="content"}
+<div id="page-head">
+	<div id="page-title">
+		<h1 class="page-header text-overflow">登录日志</h1>
+	</div>
+</div>
+<div id="page-content">
+	<div class="panel">
+		<div class="panel-heading">
+			<h3 class="panel-title">
+                        登录日志
+                    </h3>
+		</div>
+		<div class="panel-body">
+			<form class="form-inline mb-md">
+				<div class="form-group mb-md">
+					<div class="input-daterange input-group date" id="datepicker" data-date-format="yyyy-mm-dd">
+						<input type="text" class="form-control" name="db" id="db" readonly="readonly" value="2020-07-23">
+						<span class="input-group-addon">到</span>
+						<input type="text" class="form-control" name="de" id="de" readonly="readonly" value="2020-08-23">
+					</div>
+				</div>
+				<div class="form-group mb-md">
+					<div class="input-group date">
+						<button class="btn btn-info">查询</button>
+					</div>
+				</div>
+			</form>
+			<div class="dataTables_wrapper form-inline dt-bootstrap no-footer">
+				<div class="row">
+					<div class="col-sm-12">
+						<table id="dt-userlogs-list" class="table table-hover table-bordered dataTable no-footer dtr-inline" cellspacing="0" width="100%">
+							<thead>
+								<tr>
+									<th class="min-tablet text-center">账号</th>
+									<th class="text-center">登陆时间</th>
+									<th class="min-tablet text-center">登陆IP</th>
+									<th class="text-center">登陆地址</th>
+									<th class="min-desktop text-center">备注</th>
+								</tr>
+							</thead>
+							<tbody>
+
+								<tr>
+									<td class="text-center" tabindex="0">97887526@qq.com</td>
+									<td class="text-center sorting_1">2020-8-22 13:47:51</td>
+									<td class="text-center">
+										<a href="http://www.baidu.com/s?wd=113.17.69.107" title="点击查看IP来源" target="_blank">113.17.69.107</a>
+									</td>
+									<td class="text-center">广西玉林市</td>
+									<td class="text-center"></td>
+								</tr>
+								<tr>
+									<td class="text-center" tabindex="0">97887526@qq.com</td>
+									<td class="text-center sorting_1">2020-8-19 0:53:53</td>
+									<td class="text-center">
+										<a href="http://www.baidu.com/s?wd=222.218.98.26" title="点击查看IP来源" target="_blank">222.218.98.26</a>
+									</td>
+									<td class="text-center">广西钦州市</td>
+									<td class="text-center"></td>
+								</tr>
+								<tr>
+									<td class="text-center" tabindex="0">97887526@qq.com</td>
+									<td class="text-center sorting_1">2020-8-18 22:02:28</td>
+									<td class="text-center">
+										<a href="http://www.baidu.com/s?wd=222.218.98.26" title="点击查看IP来源" target="_blank">222.218.98.26</a>
+									</td>
+									<td class="text-center">广西钦州市</td>
+									<td class="text-center"></td>
+								</tr>
+								<tr>
+									<td class="text-center" tabindex="0">97887526@qq.com</td>
+									<td class="text-center sorting_1">2020-8-18 21:45:50</td>
+									<td class="text-center">
+										<a href="http://www.baidu.com/s?wd=222.218.98.26" title="点击查看IP来源" target="_blank">222.218.98.26</a>
+									</td>
+									<td class="text-center">广西钦州市</td>
+									<td class="text-center"></td>
+								</tr>
+								<tr>
+									<td class="text-center" tabindex="0">97887526@qq.com</td>
+									<td class="text-center sorting_1">2020-8-16 11:55:07</td>
+									<td class="text-center">
+										<a href="http://www.baidu.com/s?wd=222.218.98.26" title="点击查看IP来源" target="_blank">222.218.98.26</a>
+									</td>
+									<td class="text-center">广西钦州市</td>
+									<td class="text-center"></td>
+								</tr>
+								<tr>
+									<td class="text-center" tabindex="0">97887526@qq.com</td>
+									<td class="text-center sorting_1">2020-8-14 9:33:51</td>
+									<td class="text-center">
+										<a href="http://www.baidu.com/s?wd=222.218.98.26" title="点击查看IP来源" target="_blank">222.218.98.26</a>
+									</td>
+									<td class="text-center">广西钦州市</td>
+									<td class="text-center"></td>
+								</tr>
+								<tr>
+									<td class="text-center" tabindex="0">97887526@qq.com</td>
+									<td class="text-center sorting_1">2020-8-12 18:27:14</td>
+									<td class="text-center">
+										<a href="http://www.baidu.com/s?wd=222.218.98.26" title="点击查看IP来源" target="_blank">222.218.98.26</a>
+									</td>
+									<td class="text-center">广西钦州市</td>
+									<td class="text-center"></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{/block} {block name="javascript"} {/block}

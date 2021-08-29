@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="Content-Language" content="zh-cn">
+    <meta name="apple-mobile-web-app-capable" content="no"/>
+    <meta name="apple-touch-fullscreen" content="yes"/>
+    <meta name="format-detection" content="telephone=no,email=no"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="white">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title><?php echo $typeName ?>支付</title>
+	<link href="__STATIC__/pay/css/style.css" rel="stylesheet" media="screen">
+    <link href="__STATIC__/pay/css/toastr.min.css" rel="stylesheet">
+    <link href="__STATIC__/pay/css/font-awesome.min.css" rel="stylesheet">
+</head>
+
+<body>
+<div class="body">
+    <h1 class="mod-title">
+        <span class="ico_log ico-<?php echo $type ?>"></span>
+    </h1>
+
+    <div class="mod-ct">
+        <div class="order" style="color:red;font-size:16px">请在规定时间内支付下面显示的金额
+        </div>
+
+        <div class="amount"  style="position: relative;" >
+			<span id="money">￥{$money}</span>
+			<!--<div style="position: absolute;font-size: 10px;top: 29px;left: 75%;">
+				<a href="#" class="copy" id="copy" data-clipboard-text="{$money}">复制金额</a>
+			</div>-->
+		</div>
+        <div class="qrcode-img-wrapper" data-role="qrPayImgWrapper">
+            <div class="qrcode-img-area">
+                <div class="ui-loading qrcode-loading" style="display: none;">加载中</div>
+                <div style="position: relative;display: inline-block;">
+                    <img id='show_qrcode' alt="加载中..." src="{$qrcode}" width="210" height="210"
+                         style="display: block;">
+                    <img onclick="$('#use').hide()" id="use"
+                         src="__STATIC__/pay/img/use_<?php echo $type ?>.png"
+                         style="position: absolute;top: 50%;left: 50%;width:32px;height:32px;margin-left: -21px;margin-top: -21px">
+                </div>
+            </div>
+			<div id="btnBox">
+				<button id="app_btn" class="omg-btn omg-btn-fluid-lg">立即启用<?php echo $typeName ?>APP支付</button>
+			</div>
+
+        </div>
+        <!-- 这里可以输入你想要的提示!-->
+        <div class="time-item" id="msg">
+            <h1>二维码过期时间</h1>
+            <strong id="hour_show">0时</strong>
+            <strong id="minute_show">0分</strong>
+            <strong id="second_show">0秒</strong>
+        </div>
+
+        <div class="tip">
+			
+            <div class="ico-scan"></div>		
+            <div class="tip-text">
+                <p>请使用<?php echo $typeName ?>扫一扫</p>
+                <p>扫描二维码完成支付</p>
+                <p><div id="kf" ></div></p>
+            </div>
+        </div>
+
+        <div class="detail" id="orderDetail">
+            <dl class="detail-ct" id="desc" style="display: none;">
+
+                <dt>状态</dt>
+                <dd id="createTime">订单创建</dd>
+
+            </dl>
+            <a href="javascript:void(0)" class="arrow"><i class="ico-arrow"></i></a>
+        </div>
+
+    </div>
+    <div class="foot">
+        <div class="inner">
+            <p>手机用户可保存上方二维码到手机中</p>
+            <p>在<?php echo $typeName ?>扫一扫中选择“相册”即可</p>
+        </div>
+    </div>
+
+</div>
+<div class="copyRight">
+
+</div>
+<script src="__STATIC__/pay/js/jquery-1.10.2.min.js"></script>
+<!--注意加载顺序，顺序错乱会影响业务，需要先获取user_data-->
+<script>
+    var user_data =<?php echo json_encode($user_data);?>;
+</script>
+<script src="__STATIC__/pay/js/pay_util.js"></script>
+<script src="__STATIC__/pay/js/toastr.min.js"></script>
+<script src="__STATIC__/pay/js/clipboard.min.js"></script>
+<script>	
+//复制金额
+var clipboard = new Clipboard('.copy');
+clipboard.on('success', function (e) {
+    toastr.success("复制成功,可扫码付款时候粘贴到金额栏付款");
+});
+clipboard.on('error', function(e) {
+    document.querySelector('.copy');
+    toastr.warning("复制失败,请记住下必须付款的金额 不能多不能少否则不能成功");
+});
+
+//每隔3秒查询一次订单状态
+var t1 = window.setInterval(checkOrderStatus, 3000);
+
+function checkOrderStatus() {
+	var params={"number":user_data.pay_id,"token":'{$token}'};
+    $.post('{:url("@h5/query")}',params, function (data) {
+        if (data.code==1) {
+            //清除setInterval定时器
+            clearInterval(t1);
+			//模拟表单post提交
+			formpost("{:url('@h5/page')}",params);
+        }
+    });
+} 		
+</script>
+</body>
+</html>

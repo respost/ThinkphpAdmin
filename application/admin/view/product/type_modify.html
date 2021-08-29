@@ -1,0 +1,47 @@
+{extend name="public:base" /} 
+{block name="css"} {/block} 
+{block name="content"}
+<div id="page-head">
+	<div id="page-title">
+		<h1 class="page-header text-overflow">编辑分类</h1>
+	</div>
+</div>
+<div id="page-content">
+	<div class="layui-card">
+		<div class="layui-card-body">
+			<form class="layui-form" action="{$config['current_url']}" method="post">
+				<div class="layui-form-item">
+					<label class="col-md-2" style="text-align:right;">分类名称：</label>
+					<div class="col-md-7">
+						<input type="text" name="name" value="{$type.name}" autocomplete="off" required  lay-verify="required" placeholder="请输入分类名称" class="layui-input">
+					</div>					
+				</div>
+				<div class="layui-form-item">
+					<label class="col-md-2" style="text-align:right;">排序：</label>
+					<div class="col-md-7">
+						<input type="text" name="sort" value="{$type.sort|default='0'}" autocomplete="off" placeholder="请输入排序号" class="layui-input">
+					</div>
+					<label class="col-md-3">数字越大越靠前，默认为0</label>
+				</div>			
+				<div class="layui-form-item">
+					<label class="col-md-2" style="text-align:right;"></label>
+					<div class="col-md-7">
+						<button class="layui-btn" type="submit">立即提交</button>
+						<button type="button" class="layui-btn layui-btn-primary" onclick="window.history.back(-1)">返回</button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+{/block} {block name="javascript"} 
+<script type="text/javascript">
+layui.use(['form', 'layedit','table', 'laydate','element'], function(){
+    var form = layui.form
+    ,layer = layui.layer
+    ,layedit = layui.layedit
+    ,laydate = layui.laydate
+    ,element = layui.element,table = layui.table;
+});	
+</script> 
+{/block}

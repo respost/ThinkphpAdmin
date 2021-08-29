@@ -1,0 +1,91 @@
+{extend name="public:base" /} 
+{block name="css"} {/block} 
+{block name="content"}
+<div id="page-head">
+	<div id="page-title">
+		<h1 class="page-header text-overflow">系统设置</h1>
+	</div>
+</div>
+<div id="page-content">
+	<form class="layui-form form-horizontal" action="">
+		<div class="tab-base tab-stacked-left">
+			<!--Nav tabs-->
+			<ul class="nav nav-tabs">
+				{volist name='data' id='vo' key='k'}
+				 <!-- 只显示pid=0的 -->
+				 {if $vo.pid eq 0}
+				<li {eq name='k' value="1"}class="active"{/eq}>
+					<a data-toggle="tab" href="#tab-{$k}"><b>{$vo.title}</b></a>
+				</li>
+				 {/if}
+				{/volist} 
+			</ul>
+			<!--Tabs Content-->
+			<div class="tab-content">
+				{volist name='data' id='vo' key='k'}
+				<div id="tab-{$k}" class="tab-pane fade in {eq name='k' value="1"}active{/eq}">
+					{volist name='vo.child' id="child"}
+					<div class="form-group has-feedback">
+						<label class="col-md-2 control-label text-bold label-colon">{$child.title}</label>
+						<div class="col-md-7">
+							{switch name="child.type"}
+								{case value="1"}
+									<input type="text" name="{$child.key}"   {eq name='child.allowempty' value='0'}required  lay-verify="required"{/eq} value="{$child.val}" placeholder="{$child.mark}" autocomplete="off" class="form-control">
+								{/case}
+								{case value="2"}
+									<input type="number" name="{$child.key}" {eq name='child.allowempty' value='0'}required  lay-verify="required"{/eq} value="{$child.val}" placeholder="{$child.mark}" autocomplete="off" class="form-control">
+								 {/case}
+								{case value="3"}
+									<select name="{$child.key}" {eq name='child.allowempty' value='0'}lay-verify="required"{/eq}>
+										<option value="">请选择</option>
+									  {php} 
+										$items = explode('|',$child['item']); 
+									  {/php}
+									  {volist name='items' id='item'}
+										<option value="{$item}" {eq name='child.val' value='$item'}selected{/eq}>{$item}</option>
+									  {/volist} 
+									</select>  
+								{/case}
+								{case value="4"}
+									<input type="checkbox" name="{$child.key}" value="{$child.val}" lay-skin="switch" lay-text="ON|OFF" {eq name='child.val' value='1'}checked{/eq}>
+								{/case}
+								{case value="5"}
+									<textarea class="layui-textarea" name="{$child.key}" {eq name='child.allowempty' value='0'}required  lay-verify="required"{/eq} placeholder="{$child.mark}" autocomplete="off">{$child.val}</textarea>
+								{/case}
+								{default /}default
+							{/switch} 			
+						</div>
+						<label class="col-md-3">{$child.mark}</label>
+					</div> 
+					{/volist}
+				</div>
+				{/volist} 
+			</div>
+		</div>
+		<div class="form-group">
+			<div style="text-align:center;">
+				<button class="btn btn-mint mr-lg" type="submit" lay-submit lay-filter="submit">保存设置</button>
+				<button class="btn btn-default" type="reset">重置</button>
+			</div>
+		</div>
+	</form>
+</div>
+{/block} {block name="javascript"} 
+<script>
+layui.use(['form','upload', 'layedit','table', 'laydate','element'], function(){
+    var form = layui.form,layer = layui.layer,layedit = layui.layedit
+    ,laydate = layui.laydate,upload = layui.upload,element = layui.element,table = layui.table;     
+
+    form.on('submit(submit)', function(data){ 
+		$.post("{$config['current_url']}",data.field, function (res) {
+			swal({
+				title: "提示",
+				text:  res.msg,
+				confirmButtonText: "好的",
+			})
+		}); 		
+		return false;
+	}); 
+});
+</script>
+{/block}
